@@ -14,10 +14,9 @@ footer-links:
   linkedin: https://www.linkedin.com/in/akshay-chandrashekaran-6687a31b/
   email: blog@akshayc.com
 
-disqus:akshayc
+disqus: akshayc
 
 url: http://akshayc.com
-comments: true
 
 permalink: /:title/
 # Jekyll version
