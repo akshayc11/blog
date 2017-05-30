@@ -7,9 +7,13 @@ name: Akshay Chandrashekaran
 description: My Personal Blog
 
 #URL for avatar
+avatar: https://avatars3.githubusercontent.com/u/702424?v=3&s=460
 
 footer-links:
   github: akshayc11
+  linkedin: https://www.linkedin.com/in/akshay-chandrashekaran-6687a31b/
+  email: blog@akshayc.com
+  
 
 url: http://akshayc.com
 
