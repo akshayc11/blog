@@ -1,8 +1,9 @@
 ---
 layout: post
-title: DeepArchitect
+title: Deep Architect
 ---
 
+This post describes my understanding of the deep architect paper as described by Negrinho et al.
 
 # [DeepArchitect: Automatically Designing and Training Deep Architectures](https://www.cs.cmu.edu/~negrinho/assets/papers/deep_architect/deep_architect.pdf)
 
