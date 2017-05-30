@@ -1,3 +1,9 @@
+---
+layout: post
+title: DeepArchitect
+---
+
+
 # [DeepArchitect: Automatically Designing and Training Deep Architectures](https://www.cs.cmu.edu/~negrinho/assets/papers/deep_architect/deep_architect.pdf)
 
 ## Authors:
