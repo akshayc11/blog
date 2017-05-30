@@ -20,7 +20,7 @@ url: http://akshayc.com
 
 permalink: /:title/
 # Jekyll version
-version v1.2.0
+version: v1.2.0
 # Kramdown for markdown
 kramdown:
   # Github flavored markdown
