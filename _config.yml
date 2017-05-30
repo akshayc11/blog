@@ -17,3 +17,30 @@ footer-links:
 
 url: http://akshayc.com
 
+permalink: /:title/
+# Jekyll version
+version v1.2.0
+# Kramdown for markdown
+kramdown:
+  # Github flavored markdown
+  input: GFM
+  # Syntax highlighting
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    # use pygments syntax highlighting css
+    css_class: 'highlight'
+
+# Sass partial directory
+sass:
+  style: :expanded
+
+# Other plugins
+gems:
+   - jekyll-sitemap # Create Jekyll sitemap using gem
+   - jekyll-feed # Create  an Atom feed
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
+  - CNAME
