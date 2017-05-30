@@ -1,1 +1,15 @@
 theme: jekyll-theme-minimal
+
+# Name
+name: Akshay Chandrashekaran
+
+# Description
+description: My Personal Blog
+
+#URL for avatar
+
+footer-links:
+  github: akshayc11
+
+url: http://akshayc.com
+
