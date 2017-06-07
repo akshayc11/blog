@@ -42,11 +42,9 @@ Now, if we had access to a GUI, it is very simple to set up a stream without loo
 8. Change IP and path if you wish, click next (I chose port: 8080 path: /stream)
 9. Transcoding options: I chose transcode, Audio-MP3
 10. Miscellaneous Options (It showed the following in the generated stream output string):
-
 ```
 :sout=#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=mp3,dst=:8080/stream} :sout-keep
 ```
-
 11. Click stream, and you are done
 
 To loop, just click on the loop button in the GUI.
