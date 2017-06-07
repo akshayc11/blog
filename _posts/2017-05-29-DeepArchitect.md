@@ -1,6 +1,9 @@
 ---
 layout: post
 title: Deep Architect
+category: synopsis, hyper-parameter optimization
+customjs:
+	- "http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
 ---
 
 This post describes my understanding of the deep architect paper as described by Negrinho et al.
