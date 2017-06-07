@@ -1,4 +1,13 @@
-!-- START doctoc generated TOC please keep comment here to allow auto update -->
+
+---
+layout: page
+title: How to set up a VLC stream in command line
+---
+
+In this article, I describe how to set up a VLC stream in command line
+
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
@@ -9,13 +18,6 @@
   - [CLI:](#cli)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
----
-layout: page
-title: How to set up a VLC stream in command line
----
-
-In this article, I describe how to set up a VLC stream in command line
 
 ## Scenario
 I have a mp3 file that I want to stream across a network using http
