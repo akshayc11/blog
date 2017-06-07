@@ -43,7 +43,8 @@ Now, if we had access to a GUI, it is very simple to set up a stream without loo
 9. Transcoding options: I chose transcode, Audio-MP3
 10. Miscellaneous Options (It showed the following in the generated stream output string):
 
-```:sout=#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=mp3,dst=:8080/stream} :sout-keep
+```
+:sout=#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=mp3,dst=:8080/stream} :sout-keep
 ```
 
 11. Click stream, and you are done
@@ -53,7 +54,8 @@ To loop, just click on the loop button in the GUI.
 ### CLI
 1. Run the command:
 
-```cvlc <path to mp3 file> --sout="#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=mp3,dst=:8080/stream}" --sout-keep --loop
+```
+cvlc <path to mp3 file> --sout="#transcode{vcodec=none,acodec=mp3,ab=128,channels=2,samplerate=44100}:http{mux=mp3,dst=:8080/stream}" --sout-keep --loop
 ```
 
 ## Accessing the stream
