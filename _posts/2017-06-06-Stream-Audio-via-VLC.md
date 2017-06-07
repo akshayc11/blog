@@ -57,4 +57,4 @@ cvlc <path to mp3 file> --sout="#transcode{vcodec=none,acodec=mp3,ab=128,channel
 ```
 
 ## Accessing the stream
-In a VLC instance, or a web radio player, type out the address as http://<ipaddress>:8080/stream
+In a VLC instance, or a web radio player, type out the address as http://ipaddress:8080/stream
