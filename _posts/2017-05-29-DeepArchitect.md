@@ -27,8 +27,9 @@ Below, I will try to explain my rudimentary understanding of this in layman's te
 ## Specifying the search space (Section 4):
 
 The authors use a _Computational Module_ as a fundamental unit for the search space specification. Each computational module will take in an input of dimensionality _n_, and output a vector of dimensionality _m_.
+Each module will be controlled by their own set of hyper-parameters, which are to be defined within their scope.
 
-*TODO*: To be completed.
+Currently, I do not see any module that splices the output of two layers, which is required to implement TDNN.
 
 
 ## The Model search Algorithms
@@ -45,7 +46,21 @@ This needs to have two policies:
 
 So, what is a frontier node? Simply put, a frontier node is one that has not yet been expanded (i.e. a model that is specified by it has not been used till now.
 
-*TODO* Complete
+#### Tree Policy
+The tree policy, as described above, determines the path to traverse from a root node to a frontier node within the already expanded sections of the graph.
+How is this done? Well, at the end of each evaluation, the tree statistics are updated. All the nodes in the tree that were traversed to reach the evaluated leaf get their statistics updated by 1
+Also the average score of those nodes are updated. When going down the expanded node, an upper confidence bound is determined for all the child nodes. Child nodes who have not been expanded yet will have infinite confidence. So, the system will choose to expand them first. 
+let $n_1, n_2, ... n_b$ and $\hat{X}_1, \hat{X}_2, ... \hat{X}_b$ be the number of visits and the average score of the $b$ children of node $v$. The tree policy will choose the child that maximizes:
+
+$$
+\max_{i\in 1, ..., b} \hat{X}_i + 2c \sqrt{\frac{2 log n}{n_i}}
+$$
+$c \in \mathcal{R}_+$ is a constant that performs the tradeoff between exploration and exploitation within MCTS.
+
+#### Rollout Policy
+
+The rollout policy is to expand previously unexpanded nodes. Usually it is just a random sampling.
+
 
 ### MCTS with tree restructuring:
 
