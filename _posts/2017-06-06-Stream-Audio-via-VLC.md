@@ -1,4 +1,3 @@
-
 ---
 layout: page
 title: How to set up a VLC stream in command line
