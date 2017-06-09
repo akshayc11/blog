@@ -8,7 +8,7 @@ For people who just want the instructions, go [here](http://akshayc.com/blog/bui
 Thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/) from which, I was able to leverage ideas, and was able to understand the syntax for the configure that I finally used.
 
 Table of Contents
-=================
+-----------------
 * TOC
 {:toc}
 
@@ -56,7 +56,7 @@ As I said at the start, thanks to Stuart Langridge for his [blogpost](https://kr
 Since we want to support handling of MP3, FLAC, OGG-VORBIS file formats, we first need to compile these libraries and store them in a folder we have access to.
 In my case, I will be storing everything in /home/akshayc/local
 
-*NOTE*: As a part of my exploration of how to get the tools installed, I had compiled autotools from source because the module available in the cluster apparently did not have libltbl for some reason, which could possibly be a reason the below steps work. If you find that these instructions dont work, and you get errors regarding libltbl, then you may have to resort to this too.
+**NOTE**: As a part of my exploration of how to get the tools installed, I had compiled autotools from source because the module available in the cluster apparently did not have libltbl for some reason, which could possibly be a reason the below steps work. If you find that these instructions dont work, and you get errors regarding libltbl, then you may have to resort to this too.
 
 ```
 # Prerequisites
