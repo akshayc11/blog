@@ -7,7 +7,9 @@ For people who just want the instructions, go [here](http://akshayc.com/blog/bui
 
 Thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/) from which, I was able to leverage ideas, and was able to understand the syntax for the configure that I finally used.
 
-* Table of Contents
+Table of Contents
+=================
+* TOC
 {:toc}
 
 ## Introduction
