@@ -3,7 +3,9 @@ layout: page
 title: Building SoX from scratch, aka an excercise in self-fladgellation
 ---
 
-For people who just want the instructions, go [here](#). For people who want to read about my frustration, pain, and the road to my eventual success, keep reading. 
+For people who just want the instructions, go [here](#instructions). For people who want to read about my frustration, pain, and the road to my eventual success, keep reading. 
+
+Thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/) from which, I was able to leverage ideas, and was able to understand the syntax for the configure that I finally used.
 
 ##Introduction
 [SoX](http://sox.sourceforge.net/) is a self-proclaimed swiss army knife of sound processing programs. Indeed, I have used it quite a lot in my years as a speech recognition researcher. It gives you really quick and quite intuitive, and frankly really powerful options to modify audio files right from the command line.
@@ -27,5 +29,85 @@ So, where were we? Oh yes, GALE Mandarin! This particular dataset has it's own i
 
 SoX was last updated, as of writing this, on 22nd February 2015, which in distribution terms, could be considered as the universe having undergone atleast 3 big-bang-to-big-crunchs. Other programmers can, and will relate: Dependencies are broken. Instructions are outdated, documentation for compilation is non-existent/incomrehensible/outdated (it's a spectrum you see...), yada yada, yada...  So all-in-all, I knew I had to stiffen up my upper lip, gird my loins, and get down and dirty with the intricacies of this process.
 
+to be continued...
 
-## 
+## The Actual Meat of the matter:
+
+Ok \</rant/>. The following are the steps I took to get the compilation done:
+As I said at the start, thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/)
+
+### Requirements:
+
+1. We want sox to be compiled from source.
+2. We want it to be able to handle formats like mp3, flac, oggvorbis
+3. We do not have access to sudo
+4. We need to not have access to the dependencies like liblame, libflac, libogg, libvorbis in the usual /usr/local
+5. We don't care if the library is compiled with static or shared....
+
+### Instructions
+
+#### Installing the dependencies
+
+Since we want to support handling of MP3, FLAC, OGG-VORBIS file formats, we first need to compile these libraries and store them in a folder we have access to.
+In my case, I will be storing everything in /home/akshayc/local
+
+*NOTE*: As a part of my exploration of how to get the tools installed, I had compiled autotools from source because the module available in the cluster apparently did not have libltbl for some reason, which could possibly be a reason the below steps work. If you find that these instructions dont work, and you get errors regarding libltbl, then you may have to resort to this too.
+
+```
+# Prerequisites
+### LAME:
+wget -O lame-3.99.5.tar.gz "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Flame%2Ffiles%2Flame%2F3.99%2F&ts=1416316457&use_mirror=kent"
+
+# You can go to the sourceforge download page and get a link to a better version if available. Hopefully it won't break.
+tar -xf lame-3.99.5.tar.gz
+cd lame-3.99.5
+./configure --prefix=/home/akshayc/local
+make clean
+make -j`nproc`
+make install
+cd ..
+
+# Link for from where I got OGG, VORBIS and FLAC: https://www.xiph.org/downloads/
+### OGG:
+# right click on the download link and select copy link address, then wget it.. like:
+wget http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.gz
+tar -xf libogg-1.3.2.tar.gz
+cd libogg-1.3.2
+./configure --prefix=/home/akshayc/local
+cd -
+# Do the same for VORBIS, and then FLAC
+
+#### Now the beast SoX
+
+Now that we have all the dependencies installed to `/home/akshayc/local`, we can get to installing SoX
+
+While SoX apparently can do dynamic linking of the dependencies using libtldl, in the cluster I was working with, I was unable to get that working
+However, I found the following to work:
+
+```
+
+# Go to https://sourceforge.net/projects/sox/files/sox/
+# Click on the folder of the version you are interested in. 14.4.1 is broken in some respects. So, go for 14.4.2. You will want to remove the /download at the end of the link
+
+wget https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.gz
+
+tar -xf sox-14.4.2.tar.gz
+cd sox-14.4.2
+# If configure is not present, (ideally is should be)
+autoreconf -ivf
+# We need to make sure that the linker can find all the dependencies, and that the includes can also be found. Surprisingly, given that, the configure is pretty good. 
+./configure LDFLAGS=-L/home/akshayc/local/lib CFLAGS=-I/home/akshayc/local/include --prefix=/home/akshayc/local
+
+make -s
+make install
+cd -
+
+```
+
+Ensure that in your bashrc, you have
+```
+LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:/home/akshayc/local/lib:/home/akshayc/local/lib64
+PATH=${PATH}:/home/akshayc/local/bin
+```
+
+This should be enough, and you should be able to use the sox binary for all your nefarious needs.
