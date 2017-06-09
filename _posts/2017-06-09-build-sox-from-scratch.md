@@ -7,19 +7,23 @@ For people who just want the instructions, go [here](http://akshayc.com/blog/bui
 
 Thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/) from which, I was able to leverage ideas, and was able to understand the syntax for the configure that I finally used.
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
+- [Introduction](#introduction)
+- [The setup (of the story)](#the-setup-of-the-story)
+- [Storm Clouds in the Horizon](#storm-clouds-in-the-horizon)
+- [The Actual Meat of the matter:](#the-actual-meat-of-the-matter)
+  - [Requirements](#requirements)
+  - [Instructions](#instructions)
+    - [Installing the dependencies](#installing-the-dependencies)
+    - [Now the beast SoX](#now-the-beast-sox)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 Table of Contents
 =================
-
-      * [Introduction](#introduction)
-      * [The setup (of the story)](#the-setup-of-the-story)
-      * [Storm Clouds in the Horizon](#storm-clouds-in-the-horizon)
-      * [The Actual Meat of the matter:](#the-actual-meat-of-the-matter)
-         * [Requirements](#requirements)
-         * [Instructions](#instructions)
-            * [Installing the dependencies](#installing-the-dependencies)
-            * [Now the beast SoX](#now-the-beast-sox)
 
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
