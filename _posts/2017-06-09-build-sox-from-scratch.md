@@ -3,11 +3,28 @@ layout: page
 title: Building SoX from scratch, aka an excercise in self-fladgellation
 ---
 
-For people who just want the instructions, go [here](#instructions). For people who want to read about my frustration, pain, and the road to my eventual success, keep reading. 
+For people who just want the instructions, go [here](http://akshayc.com/blog/build-sox-from-scratch/#instructions). For people who want to read about my frustration, pain, and the road to my eventual success, keep reading. 
 
 Thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/) from which, I was able to leverage ideas, and was able to understand the syntax for the configure that I finally used.
 
-##Introduction
+
+
+Table of Contents
+=================
+
+      * [Introduction](#introduction)
+      * [The setup (of the story)](#the-setup-of-the-story)
+      * [Storm Clouds in the Horizon](#storm-clouds-in-the-horizon)
+      * [The Actual Meat of the matter:](#the-actual-meat-of-the-matter)
+         * [Requirements](#requirements)
+         * [Instructions](#instructions)
+            * [Installing the dependencies](#installing-the-dependencies)
+            * [Now the beast SoX](#now-the-beast-sox)
+
+Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
+
+
+## Introduction
 [SoX](http://sox.sourceforge.net/) is a self-proclaimed swiss army knife of sound processing programs. Indeed, I have used it quite a lot in my years as a speech recognition researcher. It gives you really quick and quite intuitive, and frankly really powerful options to modify audio files right from the command line.
 
 Usually, one simply uses a package manager available for your linux distributions (all hail the all powerful apt), to simply pull in a precomiled binary, and you are set to go. However, when you are like me, and have to work in scenarios where you are not, and honestly, dont want to be root (waaay too much responsibility), you have to suck it up and start installing stuff from scratch AKA compile from source.
@@ -36,7 +53,7 @@ to be continued...
 Ok \</rant/>. The following are the steps I took to get the compilation done:
 As I said at the start, thanks to Stuart Langridge for his [blogpost](https://kryogenix.org/days/2014/11/18/making-a-static-build-of-sox/)
 
-### Requirements:
+### Requirements
 
 1. We want sox to be compiled from source.
 2. We want it to be able to handle formats like mp3, flac, oggvorbis
@@ -58,7 +75,8 @@ In my case, I will be storing everything in /home/akshayc/local
 ### LAME:
 wget -O lame-3.99.5.tar.gz "http://downloads.sourceforge.net/project/lame/lame/3.99/lame-3.99.5.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Flame%2Ffiles%2Flame%2F3.99%2F&ts=1416316457&use_mirror=kent"
 
-# You can go to the sourceforge download page and get a link to a better version if available. Hopefully it won't break.
+# You can go to the sourceforge download page and get a link
+# to a better version if available. Hopefully it won't break.
 tar -xf lame-3.99.5.tar.gz
 cd lame-3.99.5
 ./configure --prefix=/home/akshayc/local
@@ -67,7 +85,8 @@ make -j`nproc`
 make install
 cd ..
 
-# Link for from where I got OGG, VORBIS and FLAC: https://www.xiph.org/downloads/
+# Link for from where I got OGG, VORBIS and FLAC:
+https://www.xiph.org/downloads/
 ### OGG:
 # right click on the download link and select copy link address, then wget it.. like:
 wget http://downloads.xiph.org/releases/ogg/libogg-1.3.2.tar.gz
@@ -76,6 +95,7 @@ cd libogg-1.3.2
 ./configure --prefix=/home/akshayc/local
 cd -
 # Do the same for VORBIS, and then FLAC
+```
 
 #### Now the beast SoX
 
@@ -87,7 +107,9 @@ However, I found the following to work:
 ```
 
 # Go to https://sourceforge.net/projects/sox/files/sox/
-# Click on the folder of the version you are interested in. 14.4.1 is broken in some respects. So, go for 14.4.2. You will want to remove the /download at the end of the link
+# Click on the folder of the version you are interested in.
+# 14.4.1 is broken in some respects. So, go for 14.4.2.
+# You will want to remove the /download at the end of the link
 
 wget https://sourceforge.net/projects/sox/files/sox/14.4.2/sox-14.4.2.tar.gz
 
@@ -95,8 +117,12 @@ tar -xf sox-14.4.2.tar.gz
 cd sox-14.4.2
 # If configure is not present, (ideally is should be)
 autoreconf -ivf
-# We need to make sure that the linker can find all the dependencies, and that the includes can also be found. Surprisingly, given that, the configure is pretty good. 
-./configure LDFLAGS=-L/home/akshayc/local/lib CFLAGS=-I/home/akshayc/local/include --prefix=/home/akshayc/local
+# We need to make sure that the linker can find all the dependencies,
+# and that the includes can also be found. Surprisingly, given that,
+# the configure is pretty good. 
+./configure LDFLAGS=-L/home/akshayc/local/lib \
+	    CFLAGS=-I/home/akshayc/local/include \
+	    --prefix=/home/akshayc/local
 
 make -s
 make install
