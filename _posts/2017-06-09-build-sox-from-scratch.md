@@ -32,10 +32,16 @@ Given the above, and the fact that each research group has its own set of idisyn
 
 So, where were we? Oh yes, GALE Mandarin! This particular dataset has it's own idiosyncracies as well. Even though it is maintined by the LDC, for whatever reason, the data was stored in FLAC format. Shut up you audiophiles. I know FLAC is lossless, high quality, better lossless compression, yada yada... The point I am trying to make is, they could have simply stored it in wavfiles for easy parsing by existing tools, but no.. So the upshot is that we now have a dependency on a third party tool, in this case SoX to be able to read this data, and split it into chunks based on timestamps from ground-truth transcriptions.
 
-SoX was last updated, as of writing this, on 22nd February 2015, which in distribution terms, could be considered as the universe having undergone atleast 3 big-bang-to-big-crunchs. Other programmers can, and will relate: Dependencies are broken. Instructions are outdated, documentation for compilation is non-existent/incomrehensible/outdated (it's a spectrum you see...), yada yada, yada...  So all-in-all, I knew I had to stiffen up my upper lip, gird my loins, and get down and dirty with the intricacies of this process.
+SoX was last updated, as of writing this, on 22nd February 2015, which in distribution terms, could be considered as the universe having undergone atleast 3 big-bang-to-big-crunches. Other programmers can, and will relate: Dependencies are broken. Instructions are outdated, documentation for compilation is non-existent/incomrehensible/outdated (it's a spectrum you see...), yada yada, yada...  So all-in-all, I knew I had to stiffen up my upper lip, gird my loins, and get down and dirty with the intricacies of this process.
 
-to be continued...
+## The first Shower:
+At first, it did not seem like this would be a massive undertaking. I found the source code relatively quickly. The default instructions seemed to be reasonable, and I always had the impression that SoX supported all the open source libraries directly and seamlessly off the bat, like VLC. I got the code configured, and installed into the location of my choice. I did not bother to check the config log. Who does? Assuming that I had it working, I typed soxi in the command line, and it showed the normal help. I marked the issue closed in my mind, set up a batch command in the HPC cluster to start the speech recognition training, and started moving on to other more pressing stuff (What music should I listen to next? Did Flik (A twitch streamer I semi-regularly watch) release another VOD for PLayer Unknown's Battlegrounds, Whats the next piece of work to do?)
 
+Come evening, my boss / advisor asked me to get some statistics of the GALE mandarin speech corpus. Having done this multiple times for other languages, I gave him a thumbs up, and relogged into my console. There is a simple Kaldi command to get this information from the prepared data folders.
+
+I run this command, and was blasted with a plethora of aborts and errors. Stunned, I ran the command again, to ensure that it was not some freak accident / hallucination. Well, I got a repeat of the massive dosage of aborts and errors. With a sinking heart, I ran the command with a pipe to less to see what was the first error. The error was in the SoX command that was being called.
+
+However, 
 ## The Actual Meat of the matter:
 
 Ok \</rant/>. The following are the steps I took to get the compilation done:
