@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: post
 title: Installing Perl Modules to a custom location from source
 ---
 
